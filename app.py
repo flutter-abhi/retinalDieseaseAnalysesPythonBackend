@@ -26,7 +26,7 @@ def load_model():
     model = OcularDiseaseModel().to(device)
     
     # Load model weights
-    checkpoint = torch.load('best_model.pth', map_location=device)
+    checkpoint = torch.load('best_model.pth', map_location=device, weights_only=False)
     model.load_state_dict(checkpoint['model_state_dict'])
     model.eval()
     print(f"Model loaded successfully on {device}")
