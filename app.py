@@ -103,9 +103,10 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+port_num = process.env.PORT
+
 if __name__ == '__main__':
     # Load the model before starting the server
     load_model()
-    
-    # Start the Flask app
-    app.run(host='0.0.0.0', port=5001)
+        # Start the Flask app
+    app.run(host='0.0.0.0', port=port_num)
