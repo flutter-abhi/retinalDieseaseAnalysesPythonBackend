@@ -6,6 +6,7 @@ import io
 import requests
 from utils.preprocessing import preprocess_image
 from models.model import OcularDiseaseModel
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -103,10 +104,9 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-port_num = process.env.PORT
 
 if __name__ == '__main__':
     # Load the model before starting the server
     load_model()
-        # Start the Flask app
-    app.run(host='0.0.0.0', port=port_num)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
