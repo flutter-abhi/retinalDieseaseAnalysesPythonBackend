@@ -40,6 +40,15 @@ def load_image_from_url(url):
     except Exception as e:
         raise Exception(f"Error loading image from URL: {str(e)}")
 
+
+@app.route('/', methods=['GET'])
+def home():
+     return jsonify({'message': 'python backend for retinal diesase analyser started'}), 400
+
+    
+    # Get JSON data
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     # Get JSON data from request
@@ -99,4 +108,4 @@ if __name__ == '__main__':
     load_model()
     
     # Start the Flask app
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5001)
